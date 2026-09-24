@@ -8,7 +8,7 @@ import { EMPRESA } from '../config/empresa.js'
  * - Enlaces directos a:
  *   1. WhatsApp (+54 9 2615555306)
  *   2. Email (dédalo.integraciones@gmail.com)
- *   3. Google Maps (Baigorria s/n Puerto Tirol, Chaco)
+ *   3. Google Maps (Baigorria S/N, Ciudad, Mendoza)
  * - Accesibilidad completa con aria-label y títulos claros.
  * - Desaparece al llegar al footer en desktop y permanece oculto en mobile/tablet.
  */

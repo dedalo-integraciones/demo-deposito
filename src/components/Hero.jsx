@@ -71,7 +71,7 @@ export default function Hero() {
 
           {/* Bajada descriptiva - Escalonado 3 */}
           <p className="hero-fade-item hero-delay-3 text-sm sm:text-base md:text-lg text-gray-900 font-medium leading-relaxed mb-6 sm:mb-8 text-left">
-            Catálogo online. Venta, distribución mayorista y minorista en Puerto Tirol, Chaco. Armá tu lista, solicitá tu presupuesto personalizado sin compromiso.
+            Catálogo online. Venta, distribución mayorista y minorista en Mendoza. Armá tu lista, solicitá tu presupuesto personalizado sin compromiso.
           </p>
 
           {/* CTA 'Consultar por WhatsApp' - Escalonado 4 */}

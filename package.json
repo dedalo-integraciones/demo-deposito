@@ -35,6 +35,5 @@
     "terser": "^5.51.2",
     "tsx": "^4.21.0",
     "typescript": "^7.0.2"
-  },
-  "packageManager": "npm@10.9.2"
+  }
 }

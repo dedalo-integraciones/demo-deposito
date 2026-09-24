@@ -63,7 +63,7 @@
 ### D. Actualización de Identidad Corporativa y Datos de Contacto
 Por solicitud del cliente, se actualizó la información de la empresa de forma transversal en toda la plataforma:
 - **Nombre de la Empresa:** Depósito Baigorria (títulos, encabezados, Hero, Footer, metadata web, manifest PWA).
-- **Dirección:** Baigorria s/n Puerto Tirol, Chaco (enlaces a Google Maps, tarjetas, políticas y términos legales).
+- **Dirección:** Baigorria S/N, Ciudad, Mendoza (enlaces a Google Maps, tarjetas, políticas y términos legales).
 - **Teléfono:** +54 9 2615555306 (enlaces `tel:` en Footer y botones flotantes).
 - **WhatsApp:** +54 9 2615555306 (número de API `5492615555306` para enlaces click-to-chat en Header, Hero, Destacados, Populares, Catálogo, ModalProducto y Carrito).
 - **Email:** `dédalo.integraciones@gmail.com` (enlaces `mailto:`, variable de destino de formularios FormSubmit y verificación de rol SuperAdmin en Firebase Auth y `firestore.rules`).

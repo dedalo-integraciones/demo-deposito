@@ -8,7 +8,7 @@ Al acceder y utilizar el sitio web de **Depósito Baigorria** (en adelante, "el 
 
 ## 2. Identificación del titular
 
-El Sitio es operado por **Depósito Baigorria**, con domicilio en Baigorria s/n Puerto Tirol, Chaco, República Argentina.
+El Sitio es operado por **Depósito Baigorria**, con domicilio en Baigorria S/N, Ciudad, Mendoza, República Argentina.
 
 ## 3. Naturaleza del catálogo
 
@@ -44,7 +44,7 @@ El Sitio puede contener enlaces a sitios de terceros. Depósito Baigorria no se 
 
 ## 9. Legislación aplicable y jurisdicción
 
-Los presentes Términos y Condiciones se rigen por las leyes de la República Argentina, en particular la **Ley 24.240 de Defensa del Consumidor**. Cualquier controversia será sometida a los tribunales competentes de la Provincia del Chaco.
+Los presentes Términos y Condiciones se rigen por las leyes de la República Argentina, en particular la **Ley 24.240 de Defensa del Consumidor**. Cualquier controversia será sometida a los tribunales competentes de la Provincia de Mendoza.
 
 ## 10. Modificaciones
 

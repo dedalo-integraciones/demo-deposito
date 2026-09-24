@@ -194,3 +194,15 @@ Decisiones arquitectónicas y de producto que no están explícitas en el códig
 ---
 
 **Fin del documento.** Este README es vivo: actualizar cada vez que se cierre una deuda de la sección 11, se tome una decisión nueva, o cambie un contacto crítico.
+
+Configuración recomendada en el panel de Cloudflare Pages
+En tu panel de Cloudflare Pages (Settings > Builds & deployments > Build configurations / Environment variables):
+Build settings:
+Framework preset: Vite (o None)
+Build command: npm run build
+Build output directory: dist
+Environment variables (Variables de entorno de compilación):
+Agregá la variable:
+Variable name: NODE_VERSION
+Value: 20.18.0
+Con este ajuste y los nuevos archivos de control de versión en el repositorio, la próxima compilación en Cloudflare Pages completará la instalación de dependencias y el build de Vite exitosamente.

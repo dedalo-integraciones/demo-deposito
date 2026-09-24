@@ -369,7 +369,7 @@ export default function CtaLogistica() {
               }`}
               style={{ transitionDelay: '450ms' }}
             >
-              Atención comercial. Atención de pedidos mayoristas, minorista con entrega coordinada en Chaco.
+              Atención comercial. Atención de pedidos mayoristas, minorista con entrega coordinada en Mendoza.
             </p>
 
             {/* 3 Pilares destacados - Escalonado 4 */}
@@ -395,7 +395,7 @@ export default function CtaLogistica() {
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1">Capacidad de acopio</h3>
                 <p className="text-xs text-gray-300 leading-normal">
-                  Depósito central en Puerto Tirol acondicionado para rotación ágil y seguro.
+                  Depósito central en Ciudad de Mendoza acondicionado para rotación ágil y seguro.
                 </p>
               </div>
 
@@ -405,7 +405,7 @@ export default function CtaLogistica() {
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1">Canal comercial activo</h3>
                 <p className="text-xs text-gray-300 leading-normal">
-                  Cobertura en ferretería, agro, construcción e insumos en todo Chaco.
+                  Cobertura en ferretería, agro, construcción e insumos en todo Mendoza.
                 </p>
               </div>
             </div>

@@ -8,7 +8,7 @@ En **Depósito Baigorria** nos comprometemos a proteger la privacidad de los usu
 
 ## 2. Responsable del tratamiento
 
-El responsable del tratamiento de los datos personales es **Depósito Baigorria**, con domicilio en Baigorria s/n Puerto Tirol, Chaco, República Argentina.
+El responsable del tratamiento de los datos personales es **Depósito Baigorria**, con domicilio en Baigorria S/N, Ciudad, Mendoza, República Argentina.
 
 ## 3. Datos que recopilamos
 

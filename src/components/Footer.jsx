@@ -38,7 +38,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-gray-400 leading-[1.8]">
-              Venta y distribución mayorista y minorista en Puerto Tirol, Chaco. Armá tu lista y solicitá tu presupuesto personalizado sin compromiso.
+              Venta y distribución mayorista y minorista en Mendoza. Armá tu lista y solicitá tu presupuesto personalizado sin compromiso.
             </p>
             {/* Redes sociales: solo íconos */}
             <div className="flex items-center gap-3 pt-1">
@@ -147,7 +147,7 @@ export default function Footer() {
               Atención Comercial
             </h3>
             <p className="text-sm text-gray-400 leading-[1.8]">
-              Atención a pedidos mayoristas y minoristas con logística y entrega coordinada en Chaco.
+              Atención a pedidos mayoristas y minoristas con logística y entrega coordinada en Mendoza.
             </p>
           </div>
         </div>

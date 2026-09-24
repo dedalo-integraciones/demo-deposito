@@ -21,6 +21,7 @@ React 18 + Vite | Firebase Firestore (datos) | Firebase Storage (imágenes, POST
 8. Ordenamiento de consultas en cliente (v1). Consultas solo por igualdad (sin índices compuestos).
 9. Imagen: string con path de Storage o URL externa provisoria mientras Storage esté postergado; '' si no hay.
 10. No crear colecciones ni documentos sin aprobación explícita del dueño del proyecto (paso de seed).
+11. Prohibido crear o commitear el archivo bun.lock. Usar únicamente Node.js, npm y package-lock.json.
 
 ## Modelo de datos Firestore (APROBADO por el dueño)
 rubros/{ID autogenerado}: { descripcion: string, activo: boolean, imagen: string }

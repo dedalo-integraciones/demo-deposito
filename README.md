@@ -203,8 +203,26 @@ Build output directory: dist
 Environment variables (Variables de entorno de compilación):
 Agregá la variable:
 Variable name: NODE_VERSION
-Value: 20.18.0
+Value: 22.12.0
 Con este ajuste y los nuevos archivos de control de versión en el repositorio, la próxima compilación en Cloudflare Pages completará la instalación de dependencias y el build de Vite exitosamente.
+
+Imagen 1 y 2 (Configuración de compilación)
+Campo	Qué colocar
+Nombre del proyecto	demo-deposito
+Comando de compilación	npm run build
+Implementar comando	npx wrangler deploy (dejar como está)
+Comando de vista previa	npx wrangler preview (dejar como está)
+Habilitar compilaciones de vista previa	Activado (azul)
+Protect with Cloudflare Access	Desactivado (gris)
+Imagen 2 (Configuración avanzada)
+Campo	Qué colocar
+Ruta (Directorio raíz)	Dejalo vacío o poné solo / (¡nunca /dist!)
+Token de API	demo-deposito build token (dejar como está seleccionado)
+Imagen 3 (Variables de compilación)
+Campo	Qué colocar
+Nombre de variable	NODE_VERSION
+Valor variable	22.12.0
+
 
 
 **Fin del documento.** Este README es vivo: actualizar cada vez que se cierre una deuda de la sección 11, se tome una decisión nueva, o cambie un contacto crítico.

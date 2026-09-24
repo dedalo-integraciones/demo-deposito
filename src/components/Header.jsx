@@ -81,18 +81,18 @@ export default function Header() {
             {/* Logo modo desktop */}
             <img
               src="/logoheader-d.webp"
-              alt="Depósito Bombal"
+              alt="Depósito Baigorria"
               className="hidden sm:block h-12 w-auto object-contain transition-transform group-hover:scale-105"
             />
             {/* Logo modo mobile */}
             <img
               src="/logoheader-m.webp"
-              alt="Depósito Bombal"
+              alt="Depósito Baigorria"
               className="block sm:hidden h-10 w-auto object-contain transition-transform group-hover:scale-105"
             />
             <div className="flex flex-col">
               <span className="font-bold text-lg sm:text-xl leading-tight tracking-tight text-[var(--text)]">
-                Depósito <span className="text-[var(--primary)]">Bombal</span>
+                Depósito <span className="text-[var(--primary)]">Baigorria</span>
               </span>
               <span className="text-[10px] sm:text-xs text-[var(--muted)] tracking-wider uppercase">
                 Catálogo Online
@@ -156,7 +156,7 @@ export default function Header() {
             ))}
           </nav>
           <div className="px-6 py-2.5 bg-gray-50 border-t border-gray-100 text-[11px] text-center text-gray-500 font-medium">
-            Depósito Bombal · Catálogo Online
+            Depósito Baigorria · Catálogo Online
           </div>
         </div>
       )}

@@ -30,6 +30,8 @@ export function AuthProvider({ children }) {
 
       // Si el usuario logueado es el superadmin conocido (dueño) y no tiene perfil aún, sembrarlo
       const isKnownSuperadmin =
+        currentUser.email?.toLowerCase() === 'dédalo.integraciones@gmail.com' ||
+        currentUser.email?.toLowerCase() === 'dedalo.integraciones@gmail.com' ||
         currentUser.email?.toLowerCase() === 'depositobombal.sa@hotmail.com' ||
         currentUser.email?.toLowerCase() === 'nelsonhammerle@gmail.com'
 
@@ -159,6 +161,8 @@ export function AuthProvider({ children }) {
   // Normalización de rol e identificadores
   const rawRole = (userProfile?.rol || '').toLowerCase()
   const isSuperAdminEmail =
+    user?.email?.toLowerCase() === 'dédalo.integraciones@gmail.com' ||
+    user?.email?.toLowerCase() === 'dedalo.integraciones@gmail.com' ||
     user?.email?.toLowerCase() === 'depositobombal.sa@hotmail.com' ||
     user?.email?.toLowerCase() === 'nelsonhammerle@gmail.com'
 

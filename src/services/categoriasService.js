@@ -10,6 +10,7 @@ import {
 } from 'firebase/firestore'
 import { db, isFirebaseConfigured } from '../lib/firebase.js'
 import { bumpCatalogoVersion } from './versionService.js'
+import { recordTransactionAudit } from './auditService.js'
 
 const COLLECTION_NAME = 'categorias'
 
@@ -131,9 +132,30 @@ export async function createCategoria(data) {
     cloudinaryPublicId: (data.cloudinaryPublicId || data.public_id || '').trim(),
   }
 
-  const docRef = await addDoc(collection(db, COLLECTION_NAME), payload)
-  bumpCatalogoVersion()
-  return docRef.id
+  try {
+    const docRef = await addDoc(collection(db, COLLECTION_NAME), payload)
+    bumpCatalogoVersion()
+    await recordTransactionAudit({
+      action: 'CATEGORIA_CREATE',
+      entity: COLLECTION_NAME,
+      entityId: docRef.id,
+      actor: 'admin',
+      payload: { descripcion: payload.descripcion, idRubro: payload.idRubro, activo: payload.activo },
+      status: 'SUCCESS',
+    })
+    return docRef.id
+  } catch (err) {
+    await recordTransactionAudit({
+      action: 'CATEGORIA_CREATE',
+      entity: COLLECTION_NAME,
+      entityId: null,
+      actor: 'admin',
+      payload: { descripcion: payload.descripcion },
+      status: 'ERROR',
+      error: err?.message || String(err),
+    })
+    throw err
+  }
 }
 
 /**
@@ -160,10 +182,31 @@ export async function updateCategoria(id, data) {
     payload.cloudinaryPublicId = (data.cloudinaryPublicId || data.public_id || '').trim()
   }
 
-  const docRef = doc(db, COLLECTION_NAME, id)
-  await updateDoc(docRef, payload)
-  bumpCatalogoVersion()
-  return id
+  try {
+    const docRef = doc(db, COLLECTION_NAME, id)
+    await updateDoc(docRef, payload)
+    bumpCatalogoVersion()
+    await recordTransactionAudit({
+      action: data.activo !== undefined && Object.keys(data).length === 1 ? 'CATEGORIA_TOGGLE_ACTIVO' : 'CATEGORIA_UPDATE',
+      entity: COLLECTION_NAME,
+      entityId: id,
+      actor: 'admin',
+      payload: { ...data },
+      status: 'SUCCESS',
+    })
+    return id
+  } catch (err) {
+    await recordTransactionAudit({
+      action: 'CATEGORIA_UPDATE',
+      entity: COLLECTION_NAME,
+      entityId: id,
+      actor: 'admin',
+      payload: { ...data },
+      status: 'ERROR',
+      error: err?.message || String(err),
+    })
+    throw err
+  }
 }
 
 /**

@@ -1,4 +1,4 @@
-# README — DEPÓSITO BOMBAL · CATÁLOGO ONLINE
+# README — DEMO DEPÓSITO · CATÁLOGO ONLINE
 
 Documento de resguardo y memoria técnica del proyecto.
 Estado: producción activa. Última actualización: post-implementación del ciclo de vida de la lista de presupuesto.

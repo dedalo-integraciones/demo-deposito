@@ -9,11 +9,13 @@ import {
   Layers,
   User,
   Users,
+  ShieldCheck,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext.jsx'
 import RubrosAdmin from '../components/admin/RubrosAdmin.jsx'
 import CategoriasAdmin from '../components/admin/CategoriasAdmin.jsx'
 import ProductosAdmin from '../components/admin/ProductosAdmin.jsx'
+import AuditoriaAdmin from '../components/admin/AuditoriaAdmin.jsx'
 import MustChangePasswordModal from '../components/admin/MustChangePasswordModal.jsx'
 
 export default function Admin() {
@@ -56,7 +58,7 @@ export default function Admin() {
                 </div>
                 <div>
                   <h1 className="text-base font-bold text-gray-900 leading-none">
-                    Depósito Bombal
+                    Depósito Baigorria
                   </h1>
                   <span className="text-xs text-gray-500">Panel de Administración</span>
                 </div>
@@ -142,6 +144,20 @@ export default function Admin() {
               <Layers className="w-4 h-4" />
               <span>Rubros</span>
             </button>
+
+            <button
+              type="button"
+              id="admin-tab-auditoria"
+              onClick={() => setActiveTab('auditoria')}
+              className={`inline-flex items-center gap-2 py-4 px-1 border-b-2 font-medium text-sm transition-colors cursor-pointer whitespace-nowrap ${
+                activeTab === 'auditoria'
+                  ? 'border-[var(--primary)] text-[var(--primary)]'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+              }`}
+            >
+              <ShieldCheck className="w-4 h-4" />
+              <span>Auditoría de Transacciones</span>
+            </button>
           </nav>
         </div>
 
@@ -149,6 +165,7 @@ export default function Admin() {
         {activeTab === 'productos' && <ProductosAdmin />}
         {activeTab === 'categorias' && <CategoriasAdmin />}
         {activeTab === 'rubros' && <RubrosAdmin />}
+        {activeTab === 'auditoria' && <AuditoriaAdmin />}
       </main>
     </div>
   )

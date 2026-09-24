@@ -4,6 +4,7 @@ import { getCategoriaById } from '../services/categoriasService.js'
 import { getRubroById } from '../services/rubrosService.js'
 import { usePresupuesto } from '../context/PresupuestoContext.jsx'
 import { getImageUrl } from '../utils/cloudinary.js'
+import { EMPRESA } from '../config/empresa.js'
 
 /**
  * Modal de detalle de producto.
@@ -97,7 +98,7 @@ export default function ModalProducto({
 
   if (!isOpen || !producto) return null
 
-  const whatsappUrl = `https://wa.me/5492612430105?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/${EMPRESA.whatsappNumero}?text=${encodeURIComponent(
     `Hola, quisiera consultar por el producto "${producto.descripcion}"`
   )}`
 

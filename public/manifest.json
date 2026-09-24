@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "Depósito Bombal | Catálogo online",
-  "short_name": "Dep. Bombal",
-  "description": "Depósito Bombal — Catálogo online de productos. Solicitá tu presupuesto.",
+  "name": "Depósito Baigorria | Catálogo online",
+  "short_name": "Dep. Baigorria",
+  "description": "Depósito Baigorria — Catálogo online de productos. Solicitá tu presupuesto.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

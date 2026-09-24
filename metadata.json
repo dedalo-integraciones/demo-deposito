@@ -1,6 +1,8 @@
 {
-  "name": "Depósito Bombal | Catálogo online",
-  "description": "Depósito Bombal — Catálogo online de productos. Solicitá tu presupuesto.",
+  "name": "Demo Depósito - Catálogo online",
+  "description": "Demo Depósito — Catálogo online de productos. Solicitá tu presupuesto.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

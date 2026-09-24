@@ -182,7 +182,7 @@ export default function UsuariosPage() {
   const getWhatsAppShareUrl = () => {
     if (!createdUserModal) return '#'
     const baseUrl = window.location.origin + '/admin/login'
-    const text = `Tu usuario para Depósito Bombal es ${createdUserModal.email}. Contraseña temporal: ${createdUserModal.tempPassword}. Entrá en ${baseUrl} y cambiala en tu primer ingreso.`
+    const text = `Tu usuario para Depósito Baigorria es ${createdUserModal.email}. Contraseña temporal: ${createdUserModal.tempPassword}. Entrá en ${baseUrl} y cambiala en tu primer ingreso.`
     return `https://wa.me/?text=${encodeURIComponent(text)}`
   }
 
@@ -250,7 +250,7 @@ export default function UsuariosPage() {
                     required
                     value={emailInput}
                     onChange={(e) => setEmailInput(e.target.value)}
-                    placeholder="ejemplo@depositobombal.com"
+                    placeholder="ejemplo@depositobaigorria.com"
                     className={`w-full px-3.5 py-2.5 border rounded-xl text-sm outline-none transition-all ${
                       emailCheckStatus.state === 'valid'
                         ? 'border-emerald-500 focus:ring-2 focus:ring-emerald-200'

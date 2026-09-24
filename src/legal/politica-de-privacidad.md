@@ -4,11 +4,11 @@
 
 ## 1. Introducción
 
-En **Depósito Bombal** nos comprometemos a proteger la privacidad de los usuarios que acceden a nuestro sitio web. La presente Política describe cómo recopilamos, utilizamos y protegemos la información personal.
+En **Depósito Baigorria** nos comprometemos a proteger la privacidad de los usuarios que acceden a nuestro sitio web. La presente Política describe cómo recopilamos, utilizamos y protegemos la información personal.
 
 ## 2. Responsable del tratamiento
 
-El responsable del tratamiento de los datos personales es **Depósito Bombal**, con domicilio en Luján de Cuyo, Mendoza, República Argentina.
+El responsable del tratamiento de los datos personales es **Depósito Baigorria**, con domicilio en Baigorria s/n Puerto Tirol, Chaco, República Argentina.
 
 ## 3. Datos que recopilamos
 
@@ -47,11 +47,11 @@ De conformidad con la **Ley 25.326 de Protección de los Datos Personales** de l
 - Solicitar su supresión.
 - Oponerse a su tratamiento.
 
-Para ejercer estos derechos, puede contactarnos a: **depositobombal.sag@hotmail.com**
+Para ejercer estos derechos, puede contactarnos a: **dédalo.integraciones@gmail.com**
 
 ## 8. Compartición de datos
 
-Depósito Bombal **no vende, alquila ni cede** datos personales a terceros con fines comerciales. Solo podrán compartirse cuando sea requerido por autoridad competente o para cumplir obligaciones legales.
+Depósito Baigorria **no vende, alquila ni cede** datos personales a terceros con fines comerciales. Solo podrán compartirse cuando sea requerido por autoridad competente o para cumplir obligaciones legales.
 
 ## 9. Seguridad
 
@@ -69,5 +69,5 @@ Nos reservamos el derecho de modificar esta Política de Privacidad. Las actuali
 
 Para consultas sobre privacidad:
 
-- **Email:** depositobombal.sag@hotmail.com
-- **Teléfono:** +54 9 261 243-0105
+- **Email:** dédalo.integraciones@gmail.com
+- **Teléfono:** +54 9 2615555306

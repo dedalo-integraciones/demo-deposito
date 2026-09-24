@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore'
 import { db, isFirebaseConfigured } from '../lib/firebase.js'
 import { bumpCatalogoVersion } from './versionService.js'
+import { recordTransactionAudit } from './auditService.js'
 
 const COLLECTION_NAME = 'productos'
 
@@ -171,9 +172,30 @@ export async function createProducto(data, userId = '') {
     idUsuarioActualizacion: userId || '',
   }
 
-  const docRef = await addDoc(collection(db, COLLECTION_NAME), payload)
-  bumpCatalogoVersion()
-  return docRef.id
+  try {
+    const docRef = await addDoc(collection(db, COLLECTION_NAME), payload)
+    bumpCatalogoVersion()
+    await recordTransactionAudit({
+      action: 'PRODUCTO_CREATE',
+      entity: COLLECTION_NAME,
+      entityId: docRef.id,
+      actor: userId || 'anonymous',
+      payload: { descripcion: payload.descripcion, idCategoria: payload.idCategoria, activo: payload.activo },
+      status: 'SUCCESS',
+    })
+    return docRef.id
+  } catch (err) {
+    await recordTransactionAudit({
+      action: 'PRODUCTO_CREATE',
+      entity: COLLECTION_NAME,
+      entityId: null,
+      actor: userId || 'anonymous',
+      payload: { descripcion: payload.descripcion },
+      status: 'ERROR',
+      error: err?.message || String(err),
+    })
+    throw err
+  }
 }
 
 /**
@@ -211,10 +233,31 @@ export async function updateProducto(id, data, userId = '') {
     payload.cloudinaryPublicId = (data.cloudinaryPublicId || data.public_id || '').trim()
   }
 
-  const docRef = doc(db, COLLECTION_NAME, id)
-  await updateDoc(docRef, payload)
-  bumpCatalogoVersion()
-  return id
+  try {
+    const docRef = doc(db, COLLECTION_NAME, id)
+    await updateDoc(docRef, payload)
+    bumpCatalogoVersion()
+    await recordTransactionAudit({
+      action: data.activo !== undefined && Object.keys(data).length <= 2 ? 'PRODUCTO_TOGGLE_ACTIVO' : 'PRODUCTO_UPDATE',
+      entity: COLLECTION_NAME,
+      entityId: id,
+      actor: userId || 'anonymous',
+      payload: { ...data },
+      status: 'SUCCESS',
+    })
+    return id
+  } catch (err) {
+    await recordTransactionAudit({
+      action: 'PRODUCTO_UPDATE',
+      entity: COLLECTION_NAME,
+      entityId: id,
+      actor: userId || 'anonymous',
+      payload: { ...data },
+      status: 'ERROR',
+      error: err?.message || String(err),
+    })
+    throw err
+  }
 }
 
 /**

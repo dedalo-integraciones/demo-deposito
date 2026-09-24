@@ -17,6 +17,8 @@ import {
   checkRateLimit,
   recordSubmitTimestamp,
 } from '../utils/security.js'
+import { recordTransactionAudit } from '../services/auditService.js'
+import { EMPRESA } from '../config/empresa.js'
 
 export default function CtaLogistica() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -247,7 +249,7 @@ export default function CtaLogistica() {
       const mensajeLimpio = escapeHtml(sanitizeText(formData.mensaje))
 
       const recipientEmail =
-        import.meta.env.VITE_FORMSUBMIT_EMAIL || 'depositobombal.sa@hotmail.com'
+        import.meta.env.VITE_FORMSUBMIT_EMAIL || EMPRESA.email
 
       const payload = {
         _subject: 'Solicitud Logística',
@@ -276,6 +278,20 @@ export default function CtaLogistica() {
         setStatusMessage(
           '¡Solicitud logística enviada con éxito! Nos contactaremos a la brevedad para coordinar la alianza.'
         )
+
+        // Auditoría automática de transacción logística
+        recordTransactionAudit({
+          action: 'LOGISTICA_SUBMIT',
+          entity: 'logistica',
+          actor: emailLimpio,
+          payload: {
+            cliente: nombreLimpio,
+            rubro: rubroLimpio,
+            telefono: telefonoLimpio,
+          },
+          status: 'SUCCESS',
+        })
+
         // Limpiar formulario en caso de éxito
         setFormData({
           nombre: '',
@@ -353,7 +369,7 @@ export default function CtaLogistica() {
               }`}
               style={{ transitionDelay: '450ms' }}
             >
-              Atención comercial. Atención de pedidos mayoristas, minorista con entrega coordinada en Mendoza.
+              Atención comercial. Atención de pedidos mayoristas, minorista con entrega coordinada en Chaco.
             </p>
 
             {/* 3 Pilares destacados - Escalonado 4 */}
@@ -379,7 +395,7 @@ export default function CtaLogistica() {
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1">Capacidad de acopio</h3>
                 <p className="text-xs text-gray-300 leading-normal">
-                  Depósito central en Luján de Cuyo acondicionado para rotación ágil y seguro.
+                  Depósito central en Puerto Tirol acondicionado para rotación ágil y seguro.
                 </p>
               </div>
 
@@ -389,7 +405,7 @@ export default function CtaLogistica() {
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1">Canal comercial activo</h3>
                 <p className="text-xs text-gray-300 leading-normal">
-                  Cobertura en ferretería, agro, construcción e insumos en todo Mendoza.
+                  Cobertura en ferretería, agro, construcción e insumos en todo Chaco.
                 </p>
               </div>
             </div>

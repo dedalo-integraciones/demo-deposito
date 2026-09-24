@@ -25,12 +25,12 @@ export default function Footer() {
             <div className="flex items-center gap-2.5">
               <img
                 src="/logoheader-d.webp"
-                alt="Depósito Bombal"
+                alt="Depósito Baigorria"
                 className="h-10 w-auto object-contain"
               />
               <div className="flex flex-col">
                 <span className="font-bold text-lg leading-tight tracking-tight text-white">
-                  Depósito <span className="text-red-500">Bombal</span>
+                  Depósito <span className="text-red-500">Baigorria</span>
                 </span>
                 <span className="text-[10px] text-gray-400 tracking-wider uppercase font-semibold">
                   Catálogo Online
@@ -38,7 +38,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-gray-400 leading-[1.8]">
-              Venta y distribución mayorista y minorista en Mendoza. Armá tu lista y solicitá tu presupuesto personalizado sin compromiso.
+              Venta y distribución mayorista y minorista en Puerto Tirol, Chaco. Armá tu lista y solicitá tu presupuesto personalizado sin compromiso.
             </p>
             {/* Redes sociales: solo íconos */}
             <div className="flex items-center gap-3 pt-1">
@@ -46,7 +46,7 @@ export default function Footer() {
                 href={EMPRESA.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook de Depósito Bombal"
+                aria-label="Facebook de Depósito Baigorria"
                 className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-[#1877F2] text-gray-300 hover:text-white flex items-center justify-center transition-colors shadow-xs"
               >
                 <Facebook className="w-4 h-4" />
@@ -55,7 +55,7 @@ export default function Footer() {
                 href={EMPRESA.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram de Depósito Bombal"
+                aria-label="Instagram de Depósito Baigorria"
                 className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-gray-300 hover:text-white flex items-center justify-center transition-all shadow-xs"
               >
                 <Instagram className="w-4 h-4" />
@@ -85,7 +85,7 @@ export default function Footer() {
                 <a
                   href={`tel:${EMPRESA.telefonoLink}`}
                   className="hover:text-white transition-colors leading-[1.8]"
-                  title="Llamar a Depósito Bombal"
+                  title="Llamar a Depósito Baigorria"
                 >
                   {EMPRESA.telefono}
                 </a>
@@ -147,7 +147,7 @@ export default function Footer() {
               Atención Comercial
             </h3>
             <p className="text-sm text-gray-400 leading-[1.8]">
-              Atención a pedidos mayoristas y minoristas con logística y entrega coordinada en Mendoza.
+              Atención a pedidos mayoristas y minoristas con logística y entrega coordinada en Chaco.
             </p>
           </div>
         </div>

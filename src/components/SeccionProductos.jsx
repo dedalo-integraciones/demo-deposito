@@ -21,6 +21,7 @@ import {
 import { getCatalogoCompleto } from '../services/catalogoService.js'
 import { usePresupuesto } from '../context/PresupuestoContext.jsx'
 import { getImageUrl } from '../utils/cloudinary.js'
+import { EMPRESA } from '../config/empresa.js'
 import ModalProducto from './ModalProducto.jsx'
 
 /**
@@ -949,7 +950,7 @@ export default function SeccionProductos() {
                   <span>Reintentar</span>
                 </button>
                 <a
-                  href={`https://wa.me/5492612430105?text=${encodeURIComponent(
+                  href={`https://wa.me/${EMPRESA.whatsappNumero}?text=${encodeURIComponent(
                     'Hola, quisiera consultar por productos del catálogo'
                   )}`}
                   target="_blank"
@@ -986,7 +987,7 @@ export default function SeccionProductos() {
                   Ver todo el catálogo
                 </button>
                 <a
-                  href={`https://wa.me/5492612430105?text=${encodeURIComponent(
+                  href={`https://wa.me/${EMPRESA.whatsappNumero}?text=${encodeURIComponent(
                     `Hola, quisiera consultar por productos en el catálogo`
                   )}`}
                   target="_blank"

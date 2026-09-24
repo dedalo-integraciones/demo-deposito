@@ -4,11 +4,11 @@
 
 ## 1. Aceptación
 
-Al acceder y utilizar el sitio web de **Depósito Bombal** (en adelante, "el Sitio"), el usuario acepta íntegramente los presentes Términos y Condiciones. Si no está de acuerdo con ellos, le solicitamos abstenerse de utilizar el Sitio.
+Al acceder y utilizar el sitio web de **Depósito Baigorria** (en adelante, "el Sitio"), el usuario acepta íntegramente los presentes Términos y Condiciones. Si no está de acuerdo con ellos, le solicitamos abstenerse de utilizar el Sitio.
 
 ## 2. Identificación del titular
 
-El Sitio es operado por **Depósito Bombal**, con domicilio en Luján de Cuyo, Mendoza, República Argentina.
+El Sitio es operado por **Depósito Baigorria**, con domicilio en Baigorria s/n Puerto Tirol, Chaco, República Argentina.
 
 ## 3. Naturaleza del catálogo
 
@@ -29,30 +29,30 @@ El usuario se compromete a:
 
 ## 6. Propiedad intelectual
 
-Todos los contenidos del Sitio (textos, imágenes, logotipos, diseño) son propiedad de Depósito Bombal o de sus legítimos titulares, y se encuentran protegidos por las leyes de propiedad intelectual vigentes en la República Argentina.
+Todos los contenidos del Sitio (textos, imágenes, logotipos, diseño) son propiedad de Depósito Baigorria o de sus legítimos titulares, y se encuentran protegidos por las leyes de propiedad intelectual vigentes en la República Argentina.
 
 ## 7. Limitación de responsabilidad
 
-Depósito Bombal no se responsabiliza por:
+Depósito Baigorria no se responsabiliza por:
 - Interrupciones temporales del Sitio por causas técnicas o de mantenimiento.
 - Daños derivados del uso o imposibilidad de uso del Sitio.
 - Errores u omisiones en la información publicada.
 
 ## 8. Enlaces a terceros
 
-El Sitio puede contener enlaces a sitios de terceros. Depósito Bombal no se responsabiliza por el contenido, políticas o prácticas de dichos sitios.
+El Sitio puede contener enlaces a sitios de terceros. Depósito Baigorria no se responsabiliza por el contenido, políticas o prácticas de dichos sitios.
 
 ## 9. Legislación aplicable y jurisdicción
 
-Los presentes Términos y Condiciones se rigen por las leyes de la República Argentina, en particular la **Ley 24.240 de Defensa del Consumidor**. Cualquier controversia será sometida a los tribunales competentes de la Provincia de Mendoza.
+Los presentes Términos y Condiciones se rigen por las leyes de la República Argentina, en particular la **Ley 24.240 de Defensa del Consumidor**. Cualquier controversia será sometida a los tribunales competentes de la Provincia del Chaco.
 
 ## 10. Modificaciones
 
-Depósito Bombal se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán efectivas desde su publicación en el Sitio.
+Depósito Baigorria se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán efectivas desde su publicación en el Sitio.
 
 ## 11. Contacto
 
 Para consultas sobre estos Términos y Condiciones:
 
-- **Email:** depositobombal.sag@hotmail.com
-- **Teléfono:** +54 9 261 243-0105
+- **Email:** dédalo.integraciones@gmail.com
+- **Teléfono:** +54 9 2615555306

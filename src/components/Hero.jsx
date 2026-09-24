@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Sparkles, MessageCircle, ArrowUpRight } from 'lucide-react'
+import { EMPRESA } from '../config/empresa.js'
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0)
@@ -40,7 +41,7 @@ export default function Hero() {
         <source media="(max-width: 768px)" srcSet="/hero-mob.webp" />
         <img
           src="/hero.webp"
-          alt="Depósito Bombal — Instalaciones y logística"
+          alt="Depósito Baigorria — Instalaciones y logística"
           className="w-full h-full object-cover object-top"
           fetchPriority="high"
           decoding="sync"
@@ -65,18 +66,18 @@ export default function Hero() {
 
           {/* Título principal - Escalonado 2 */}
           <h1 className="hero-fade-item hero-delay-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-950 mb-3 sm:mb-4 leading-tight text-left">
-            Depósito <span className="text-[var(--primary)]">Bombal</span>
+            Depósito <span className="text-[var(--primary)]">Baigorria</span>
           </h1>
 
           {/* Bajada descriptiva - Escalonado 3 */}
           <p className="hero-fade-item hero-delay-3 text-sm sm:text-base md:text-lg text-gray-900 font-medium leading-relaxed mb-6 sm:mb-8 text-left">
-            Catálogo online. Venta, distribución mayorista y minorista en Mendoza. Arma tu lista, solicita tu presupuesto personalizado sin compromiso.
+            Catálogo online. Venta, distribución mayorista y minorista en Puerto Tirol, Chaco. Armá tu lista, solicitá tu presupuesto personalizado sin compromiso.
           </p>
 
           {/* CTA 'Consultar por WhatsApp' - Escalonado 4 */}
           <div className="hero-fade-item hero-delay-4 text-left">
             <a
-              href="https://wa.me/5492612430105?text=Hola%2C%20quisiera%20solicitar%20un%20presupuesto"
+              href={`https://wa.me/${EMPRESA.whatsappNumero}?text=Hola%2C%20quisiera%20solicitar%20un%20presupuesto`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-whatsapp shadow-xl hover:shadow-2xl"

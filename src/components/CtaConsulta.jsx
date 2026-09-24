@@ -15,6 +15,8 @@ import {
   checkRateLimit,
   recordSubmitTimestamp,
 } from '../utils/security.js'
+import { recordTransactionAudit } from '../services/auditService.js'
+import { EMPRESA } from '../config/empresa.js'
 
 export default function CtaConsulta() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -146,7 +148,7 @@ export default function CtaConsulta() {
       const mensajeLimpio = escapeHtml(sanitizeText(formData.mensaje))
 
       const recipientEmail =
-        import.meta.env.VITE_FORMSUBMIT_EMAIL || 'depositobombal.sa@hotmail.com'
+        import.meta.env.VITE_FORMSUBMIT_EMAIL || EMPRESA.email
 
       const payload = {
         _subject: 'Consulta',
@@ -173,6 +175,19 @@ export default function CtaConsulta() {
         recordSubmitTimestamp('consulta')
         setSubmitStatus('success')
         setStatusMessage('¡Consulta enviada con éxito! Nos comunicaremos con vos a la brevedad.')
+
+        // Auditoría automática de transacción de consulta
+        recordTransactionAudit({
+          action: 'CONSULTA_SUBMIT',
+          entity: 'consulta',
+          actor: emailLimpio,
+          payload: {
+            nombre: nombreLimpio,
+            telefono: telefonoLimpio,
+          },
+          status: 'SUCCESS',
+        })
+
         setFormData({
           nombre: '',
           email: '',
@@ -231,7 +246,7 @@ export default function CtaConsulta() {
           </button>
 
           <a
-            href="https://wa.me/5492612430105?text=Hola%2C%20quisiera%20hacer%20una%20consulta%20general"
+            href={`https://wa.me/${EMPRESA.whatsappNumero}?text=Hola%2C%20quisiera%20hacer%20una%20consulta%20general`}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-whatsapp w-full sm:w-auto shadow-md hover:shadow-lg"
@@ -266,7 +281,7 @@ export default function CtaConsulta() {
                     Formulario de Consulta
                   </h3>
                   <p className="text-xs text-[var(--muted)]">
-                    Depósito Bombal responderá a tu mensaje
+                    Depósito Baigorria responderá a tu mensaje
                   </p>
                 </div>
               </div>

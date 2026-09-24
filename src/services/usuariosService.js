@@ -17,15 +17,16 @@ import {
   updatePassword as authUpdatePassword,
 } from 'firebase/auth'
 import { app as mainApp, db, isFirebaseConfigured } from '../lib/firebase.js'
+import { recordTransactionAudit } from './auditService.js'
 
 // Configuración de Firebase para la instancia secundaria de Auth
 const firebaseConfig = {
-  apiKey: import.meta.env?.VITE_FIREBASE_API_KEY || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_API_KEY : ''),
-  authDomain: import.meta.env?.VITE_FIREBASE_AUTH_DOMAIN || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_AUTH_DOMAIN : ''),
-  projectId: import.meta.env?.VITE_FIREBASE_PROJECT_ID || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_PROJECT_ID : ''),
-  storageBucket: import.meta.env?.VITE_FIREBASE_STORAGE_BUCKET || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_STORAGE_BUCKET : ''),
-  messagingSenderId: import.meta.env?.VITE_FIREBASE_MESSAGING_SENDER_ID || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_MESSAGING_SENDER_ID : ''),
-  appId: import.meta.env?.VITE_FIREBASE_APP_ID || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_APP_ID : ''),
+  apiKey: import.meta.env?.VITE_FIREBASE_API_KEY || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_API_KEY : '') || 'AIzaSyDMQlq7HFg9p-d9Z1l1OqC-9ZWS-UOGvYE',
+  authDomain: import.meta.env?.VITE_FIREBASE_AUTH_DOMAIN || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_AUTH_DOMAIN : '') || 'deposito-bombal.firebaseapp.com',
+  projectId: import.meta.env?.VITE_FIREBASE_PROJECT_ID || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_PROJECT_ID : '') || 'deposito-bombal',
+  storageBucket: import.meta.env?.VITE_FIREBASE_STORAGE_BUCKET || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_STORAGE_BUCKET : '') || 'deposito-bombal.firebasestorage.app',
+  messagingSenderId: import.meta.env?.VITE_FIREBASE_MESSAGING_SENDER_ID || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_MESSAGING_SENDER_ID : '') || '835803481928',
+  appId: import.meta.env?.VITE_FIREBASE_APP_ID || (typeof process !== 'undefined' ? process.env.VITE_FIREBASE_APP_ID : '') || '1:835803481928:web:70618464281cdbf58b157d',
 }
 
 /**
@@ -123,9 +124,26 @@ export async function toggleUsuarioStatus(uid, currentStatus) {
   try {
     const userRef = doc(db, 'usuarios', uid)
     await setDoc(userRef, { status: newStatus, updatedAt }, { merge: true })
+    await recordTransactionAudit({
+      action: 'USUARIO_TOGGLE_STATUS',
+      entity: 'usuarios',
+      entityId: uid,
+      actor: 'superadmin',
+      payload: { previousStatus: currentStatus, newStatus },
+      status: 'SUCCESS',
+    })
     return newStatus
   } catch (error) {
     console.error(`[usuariosService] Error al actualizar estado de ${uid}:`, error)
+    await recordTransactionAudit({
+      action: 'USUARIO_TOGGLE_STATUS',
+      entity: 'usuarios',
+      entityId: uid,
+      actor: 'superadmin',
+      payload: { previousStatus: currentStatus },
+      status: 'ERROR',
+      error: error?.message || String(error),
+    })
     throw error
   }
 }
@@ -178,6 +196,16 @@ export async function crearUsuarioSecundario({ email, rol }) {
     }
 
     await setDoc(doc(db, 'usuarios', newUid), userDocData)
+
+    // Registrar auditoría automática de la transacción
+    await recordTransactionAudit({
+      action: 'USUARIO_CREATE',
+      entity: 'usuarios',
+      entityId: newUid,
+      actor: 'superadmin',
+      payload: { email: cleanEmail, rol: userDocData.rol, status: userDocData.status },
+      status: 'SUCCESS',
+    })
 
     // 3. Enviar correo de restablecimiento de contraseña vía Firebase Auth
     try {

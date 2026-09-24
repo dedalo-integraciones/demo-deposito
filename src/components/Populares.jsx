@@ -13,6 +13,7 @@ import {
 import { getCatalogoCompleto } from '../services/catalogoService.js'
 import { usePresupuesto } from '../context/PresupuestoContext.jsx'
 import { getImageUrl } from '../utils/cloudinary.js'
+import { EMPRESA } from '../config/empresa.js'
 import ModalProducto from './ModalProducto.jsx'
 
 /**
@@ -471,7 +472,7 @@ export default function Populares() {
             Los productos populares se están incorporando a nuestra plataforma. Podés consultarnos directamente por stock y disponibilidad de cualquier artículo.
           </p>
           <a
-            href="https://wa.me/5492612430105?text=Hola%2C%20quisiera%20consultar%20por%20los%20productos%20populares%20disponibles"
+            href={`https://wa.me/${EMPRESA.whatsappNumero}?text=Hola%2C%20quisiera%20consultar%20por%20los%20productos%20populares%20disponibles`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-bold text-sm text-white bg-emerald-600 hover:bg-emerald-700 transition-all shadow-md hover:shadow-emerald-600/20 cursor-pointer"

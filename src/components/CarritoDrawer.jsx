@@ -22,6 +22,7 @@ import {
   recordSubmitTimestamp,
 } from '../utils/security.js'
 import { EMPRESA } from '../config/empresa.js'
+import { recordTransactionAudit } from '../services/auditService.js'
 
 function formatFechaLegible(isoDate) {
   if (!isoDate) return ''
@@ -215,7 +216,7 @@ export default function CarritoDrawer() {
         .join('\n')
 
       const recipientEmail =
-        import.meta.env.VITE_FORMSUBMIT_EMAIL || 'depositobombal.sa@hotmail.com'
+        import.meta.env.VITE_FORMSUBMIT_EMAIL || EMPRESA.email
 
       const payload = {
         _subject: 'Pedido Presupuesto',
@@ -248,6 +249,20 @@ export default function CarritoDrawer() {
         )
         // Marcar estado como 'enviado' conservando la lista
         marcarEnviado('email')
+
+        // Auditoría automática de transacción de presupuesto
+        recordTransactionAudit({
+          action: 'PRESUPUESTO_SUBMIT_EMAIL',
+          entity: 'presupuesto',
+          actor: formData.email ? sanitizeText(formData.email) : 'cliente',
+          payload: {
+            cliente: sanitizeText(formData.nombre),
+            telefono: sanitizeText(formData.telefono),
+            itemsCount: itemsDisponiblesList.length,
+            canal: 'email',
+          },
+          status: 'SUCCESS',
+        })
       } else {
         throw new Error('Respuesta no satisfactoria de FormSubmit')
       }
@@ -296,7 +311,7 @@ export default function CarritoDrawer() {
 
     // Construcción del mensaje con formato WhatsApp limpio
     const lines = []
-    lines.push('*PEDIDO DE PRESUPUESTO - Depósito Bombal*')
+    lines.push('*PEDIDO DE PRESUPUESTO - Depósito Baigorria*')
     lines.push('')
     lines.push('*Datos del Cliente:*')
     lines.push(`- *Nombre / Razón Social:* ${nombreLimpio}`)
@@ -324,6 +339,20 @@ export default function CarritoDrawer() {
 
     // Marcar como enviado por WhatsApp conservando los ítems
     marcarEnviado('whatsapp')
+
+    // Auditoría automática de transacción de presupuesto
+    recordTransactionAudit({
+      action: 'PRESUPUESTO_SUBMIT_WHATSAPP',
+      entity: 'presupuesto',
+      actor: emailLimpio || 'cliente',
+      payload: {
+        cliente: nombreLimpio,
+        telefono: telefonoLimpio,
+        itemsCount: itemsDisponiblesList.length,
+        canal: 'whatsapp',
+      },
+      status: 'SUCCESS',
+    })
 
     // Mostrar aviso con enlace directo debajo de observaciones
     setWhatsappNotice({

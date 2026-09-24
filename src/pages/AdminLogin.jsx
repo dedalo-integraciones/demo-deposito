@@ -163,7 +163,7 @@ export default function AdminLogin() {
             Panel de Administración
           </h1>
           <p className="mt-1 text-sm text-gray-500">
-            Depósito Bombal — Acceso exclusivo para personal autorizado
+            Depósito Baigorria — Acceso exclusivo para personal autorizado
           </p>
         </div>
       </div>
@@ -227,7 +227,7 @@ export default function AdminLogin() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@depositobombal.com"
+                  placeholder="admin@depositobaigorria.com"
                   className="block w-full pl-10 pr-3 py-2.5 sm:text-sm border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-colors"
                 />
               </div>
@@ -388,7 +388,7 @@ export default function AdminLogin() {
                     required
                     value={resetEmail}
                     onChange={(e) => setResetEmail(e.target.value)}
-                    placeholder="usuario@depositobombal.com"
+                    placeholder="usuario@depositobaigorria.com"
                     className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-hidden focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)]"
                   />
                 </div>

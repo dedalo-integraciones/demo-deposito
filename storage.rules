@@ -1,0 +1,22 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/files {
+
+    function esAdmin() {
+      return request.auth != null
+        && firestore.get(/databases/(default)/documents/usuarios/$(request.auth.uid)).data.rol in ['ADMIN', 'SADMIN'];
+    }
+
+    match /catalogo/{path=**} {
+      allow read: if true;
+      allow write: if esAdmin()
+        && request.resource.size < 2 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+    match /{allPaths=**} {
+      allow read: if false;
+      allow write: if false;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper para verificar si el usuario logueado es SuperAdmin en la colección 'usuarios'
+    function esSuperAdmin() {
+      return request.auth != null && (
+        (exists(/databases/$(database)/documents/usuarios/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol in ['SADMIN', 'superadmin']) ||
+        request.auth.token.email in ['depositobombal.sa@hotmail.com', 'nelsonhammerle@gmail.com']
+      );
+    }
+
+    // Helper para verificar si es admin o superior
+    function esAdmin() {
+      return request.auth != null && (
+        esSuperAdmin() ||
+        (exists(/databases/$(database)/documents/usuarios/$(request.auth.uid)) &&
+         get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol in ['ADMIN', 'admin', 'vendedor'])
+      );
+    }
+
+    // Rubros: lectura pública si activo == true; escritura si esAdmin
+    match /rubros/{id} {
+      allow read: if resource.data.activo == true || esAdmin();
+      allow write: if esAdmin();
+    }
+
+    // Categorías: lectura pública si activo == true; escritura si esAdmin
+    match /categorias/{id} {
+      allow read: if resource.data.activo == true || esAdmin();
+      allow write: if esAdmin();
+    }
+
+    // Productos: lectura pública si activo == true; escritura si esAdmin
+    match /productos/{id} {
+      allow read: if resource.data.activo == true || esAdmin();
+      allow write: if esAdmin();
+    }
+
+    // Meta / Versión de Catálogo: lectura pública; escritura si esAdmin
+    match /meta/{id} {
+      allow read: if true;
+      allow write: if esAdmin();
+    }
+
+    // Registro de public_id huérfanos de Cloudinary para borrado diferido
+    match /cloudinary_borrados_pendientes/{id} {
+      allow read, write: if esAdmin();
+    }
+
+    // Colección única de usuarios:
+    // - Lectura: superadmin puede listar toda la colección; cada usuario puede leer su propio documento
+    // - Creación: solo superadmin
+    // - Modificación: superadmin puede modificar cualquier usuario; cada usuario puede actualizar su propio documento (mustChangePassword y updatedAt)
+    // - Eliminación: solo superadmin
+    match /usuarios/{uid} {
+      allow read: if esSuperAdmin() || (request.auth != null && (request.auth.uid == uid || request.auth.token.email == uid));
+      allow create: if esSuperAdmin();
+      allow update: if esSuperAdmin() || (
+        request.auth != null &&
+        (request.auth.uid == uid || request.auth.token.email == uid) &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['mustChangePassword', 'updatedAt'])
+      );
+      allow delete: if esSuperAdmin();
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "Rubro": {
+      "title": "Rubro",
+      "description": "Rubro de productos",
+      "type": "object",
+      "properties": {
+        "descripcion": { "type": "string" },
+        "activo": { "type": "boolean" },
+        "imagen": { "type": "string" }
+      },
+      "required": ["descripcion", "activo"]
+    },
+    "Categoria": {
+      "title": "Categoria",
+      "description": "Categoría de productos vinculada a un rubro",
+      "type": "object",
+      "properties": {
+        "idRubro": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "observaciones": { "type": "string" },
+        "activo": { "type": "boolean" },
+        "imagen": { "type": "string" }
+      },
+      "required": ["idRubro", "descripcion", "activo"]
+    },
+    "Producto": {
+      "title": "Producto",
+      "description": "Producto del catálogo",
+      "type": "object",
+      "properties": {
+        "codigoOrigen": { "type": "string" },
+        "descripcion": { "type": "string" },
+        "obsUnidad": { "type": "string" },
+        "idCategoria": { "type": "string" },
+        "activo": { "type": "boolean" },
+        "destacado": { "type": "boolean" },
+        "popular": { "type": "boolean" },
+        "imagen": { "type": "string" }
+      },
+      "required": ["descripcion", "idCategoria", "activo"]
+    },
+    "Usuario": {
+      "title": "Usuario",
+      "description": "Usuario del sistema con rol y estado en la colección usuarios",
+      "type": "object",
+      "properties": {
+        "nombre": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "rol": { "type": "string", "enum": ["ADMIN", "SADMIN", "admin", "superadmin", "vendedor"] },
+        "status": { "type": "string", "enum": ["activo", "deshabilitado"] },
+        "mustChangePassword": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["email", "rol", "status"]
+    }
+  },
+  "firestore": {
+    "/rubros/{id}": {
+      "schema": "Rubro",
+      "description": "Colección de rubros"
+    },
+    "/categorias/{id}": {
+      "schema": "Categoria",
+      "description": "Colección de categorías"
+    },
+    "/productos/{id}": {
+      "schema": "Producto",
+      "description": "Colección de productos"
+    },
+    "/usuarios/{uid}": {
+      "schema": "Usuario",
+      "description": "Colección única de usuarios"
+    }
+  }
+}

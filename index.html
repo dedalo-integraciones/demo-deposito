@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon e Iconos para compatibilidad universal con todos los navegadores y dispositivos -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Apple iOS / Safari -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Dep. Bombal" />
+
+    <!-- Android / Chrome / PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#C92C36" />
+
+    <!-- Windows Tiles -->
+    <meta name="msapplication-TileColor" content="#C92C36" />
+    <meta name="msapplication-TileImage" content="/icon-192.png" />
+    <meta name="msapplication-config" content="none" />
+
+    <title>Depósito Bombal | Catálogo online</title>
+    <meta name="description" content="Depósito Bombal — Catálogo online de productos para comercios, panaderías e industrias. Solicitá tu presupuesto online." />
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn / Telegram -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Depósito Bombal" />
+    <meta property="og:url" content="https://depositobombal.vercel.app/" />
+    <meta property="og:title" content="Depósito Bombal | Catálogo online" />
+    <meta property="og:description" content="Depósito Bombal — Catálogo online de productos para comercios, panaderías e industrias. Solicitá tu presupuesto online." />
+    <meta property="og:image" content="https://depositobombal.vercel.app/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://depositobombal.vercel.app/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Depósito Bombal - Catálogo online de productos" />
+    <meta property="og:locale" content="es_AR" />
+    <link rel="image_src" href="https://depositobombal.vercel.app/og-image.jpg" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Depósito Bombal | Catálogo online" />
+    <meta name="twitter:description" content="Depósito Bombal — Catálogo online de productos para comercios, panaderías e industrias. Solicitá tu presupuesto online." />
+    <meta name="twitter:image" content="https://depositobombal.vercel.app/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Depósito Bombal - Catálogo online de productos" />
+    <!-- Preload de imagen LCP para descubrimiento inmediato en el HTML inicial -->
+    <link
+      rel="preload"
+      as="image"
+      type="image/webp"
+      href="/hero.webp"
+      imagesrcset="/hero-mob.webp 768w, /hero.webp 1920w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
+
+    <!-- Optimizaciones de Red y Precarga de Fuentes Locales (Cero solicitudes externas de fuentes) -->
+    <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
+    <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin />
+    <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/poppins-700.woff2" as="font" type="font/woff2" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+

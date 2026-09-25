@@ -194,35 +194,27 @@ Decisiones arquitectónicas y de producto que no están explícitas en el códig
 ---
 
 
-Configuración recomendada en el panel de Cloudflare Pages
-En tu panel de Cloudflare Pages (Settings > Builds & deployments > Build configurations / Environment variables):
-Build settings:
-Framework preset: Vite (o None)
-Build command: npm run build
-Build output directory: dist
-Environment variables (Variables de entorno de compilación):
-Agregá la variable:
-Variable name: NODE_VERSION
-Value: 22.12.0
-Con este ajuste y los nuevos archivos de control de versión en el repositorio, la próxima compilación en Cloudflare Pages completará la instalación de dependencias y el build de Vite exitosamente.
+## 13. Configuración y Despliegue en Cloudflare (Workers / Pages con Assets)
 
-Imagen 1 y 2 (Configuración de compilación)
-Campo	Qué colocar
-Nombre del proyecto	demo-deposito
-Comando de compilación	npm run build
-Implementar comando	npx wrangler deploy (dejar como está)
-Comando de vista previa	npx wrangler preview (dejar como está)
-Habilitar compilaciones de vista previa	Activado (azul)
-Protect with Cloudflare Access	Desactivado (gris)
-Imagen 2 (Configuración avanzada)
-Campo	Qué colocar
-Ruta (Directorio raíz)	Dejalo vacío o poné solo / (¡nunca /dist!)
-Token de API	demo-deposito build token (dejar como está seleccionado)
-Imagen 3 (Variables de compilación)
-Campo	Qué colocar
-Nombre de variable	NODE_VERSION
-Valor variable	22.12.0
+Para el despliegue continuo en **Cloudflare**, seguir las especificaciones documentadas en `docs/CLOUDFLARE_DEPLOYMENT_GUIDE.md`.
 
+### Configuración en el panel de Cloudflare
+1. **Configuración de compilación (Build settings):**
+   - **Framework preset:** `Vite` (o `None`)
+   - **Comando de compilación:** `npm run build`
+   - **Implementar comando:** `npx wrangler deploy`
+   - **Comando de vista previa:** `npx wrangler preview`
+   - **Habilitar compilaciones de vista previa:** Activado
+2. **Configuración avanzada (Advanced):**
+   - **Ruta (Directorio raíz):** Dejar vacío o poner `/` (¡nunca `/dist`!).
+3. **Variables de entorno de compilación (Environment variables):**
+   - `NODE_VERSION`: `22.12.0`
 
+### Reglas críticas de infraestructura:
+- **Routing SPA:** Manejado por `wrangler.toml` mediante `not_found_handling = "single-page-application"` (prohibido usar `public/_redirects`).
+- **Tailwind CSS:** Configurado vía `@tailwindcss/postcss` y `postcss.config.js` para garantizar builds limpios en Linux.
+- **Node & Package Manager:** Exclusivamente `npm` con `package-lock.json` sincronizado. `bun.lock` está ignorado y prohibido.
+
+---
 
 **Fin del documento.** Este README es vivo: actualizar cada vez que se cierre una deuda de la sección 11, se tome una decisión nueva, o cambie un contacto crítico.
